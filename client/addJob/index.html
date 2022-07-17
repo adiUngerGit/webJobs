@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="addblock" style="display: block">
+      <div id="toconnect">
+        <h4>information about the company:</h4>
+        <label> Name: <input type="text" id="name" /> </label>
+      </br>
+
+        <label>how many employees: <input type="text" id="employees" /></label>
+      </br>
+        <label
+          >how many years the company is: <input type="text" id="years"
+        /></label>
+      </div>
+      <h4 style="font-weight: bold">inforamation about the job</h4>
+      <label
+        >Text: <br />
+        <textarea id="text" rows="4" cols="50"> </textarea>
+      </label>
+      <div>
+        <label>location: <input type="text" id="location" /></label>
+      </div>
+      <label for="experiense"> Choose the experions you need:</label>
+      <select name="experiense" id="experiense">
+        <option value="student">student</option>
+        <option value="jonior">jonior</option>
+        <option value="senior">senior</option>
+      </select>
+
+      <div>
+        <label>salary fer hour: <input type="text" id="salary" /></label>
+      </div>
+
+      <div>
+        <label>Video URL: <input type="text" id="Video" /></label>
+      </div>
+
+      <label for="template"> Choose a Template:</label>
+      <select name="template" id="template">
+        <option value="templateA">TemplateA</option>
+        <option value="templateB">TemplateB</option>
+        <option value="templateC">TemplateC</option>
+      </select>
+      <br /><br />
+
+      <button onclick="add_ads()">add job</button>
+
+      <br /><br />
+      <br /><br />
+    </div>
+    <div id="deleteblock" style="display: block">
+      <h4 style="font-weight: bold">delete adds</h4>
+      <label for="template"> Choose a whith add you whant to delete:</label>
+      <select id="delete"></select>
+      <button onclick="delete_item()">Delete job</button>
+    </div>
+    <br />
+
+    <div id="hederEdit" style=" visibility: visible;
+    ">
+      <h4 style="font-weight: bold">Edit adds</h4>
+      <label for="template"> Choose a whith add you whant to edit:</label>
+      <select id="edit"></select>
+      <button onclick="edit_item()">Edit job</button>
+    </div>
+
+    
+    <div id="editBlock" style="display: none">
+
+
+      <div id="toconnect">
+        <h4>information about the company:</h4>
+        <label
+        >name: <input type="text" id="nameEdit"
+      /></label>
+      </br>
+        <label
+          >how many employees: <input type="text" id="employeesEdit"
+        /></label>
+      </br>
+
+        <label
+          >how many years the company is: <input type="text" id="yearsEdit"
+        /></label>
+      </br>
+
+      </div>
+      <label
+        >Text: <br />
+        <textarea id="textEdit" rows="4" cols="50"> </textarea>
+      </label>
+
+      <div>
+        <label>location: <input type="text" id="locationEdit" /></label>
+      </div>
+
+      <br />
+      <br />
+
+
+      <label for="experienseEdit"> Choose the experions you need:</label>
+      <select name="experiensEdit" id="experienseEdit">
+        <option value="student">student</option>
+        <option value="jonior">jonior</option>
+        <option value="senior">senior</option>
+      </select>
+
+      <div>
+        <label>salary fer hour: <input type="text" id="salaryEdit" /></label>
+      </div>
+
+      <label for="templateEdit"> Choose a Template:</label>
+      <select id="templateEdit">
+        <option value="templateA">TemplateA</option>
+        <option value="templateB">TemplateB</option>
+        <option value="templateC">TemplateC</option>
+      </select>
+      <br /><br />
+      
+      <button onclick="updateAdd()">update job</button>
+
+      <br /><br />
+      <br /><br />
+    </div>
+
+    <script defer src="addJob.js" defer></script>
+  </body>
+</html>
