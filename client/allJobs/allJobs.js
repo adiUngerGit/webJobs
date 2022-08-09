@@ -1,10 +1,24 @@
 const socket = io();
-
+let id_for_currut_ad = 0;
 socket.on("ad-added", (ad) => {
   console.log("ad added!", ad);
   allAds.push(ad);
 });
+async function like_it() {
+  var options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      id: id_for_currut_ad,
+      name: localStorage.getItem("name"),
+    }),
+  };
 
+  const res = await fetch("/likeIt", options);
+  console.log(id_for_currut_ad);
+}
 async function suprizeme() {}
 async function getSerchAdJob() {
   document.getElementById("serchblock").style.visibility = "hidden";
@@ -78,6 +92,7 @@ async function start() {
   }
   while (true) {
     for (let ad of allAds) {
+      id_for_currut_ad = ad._id;
       // if (1) {
       // const res = await fetch(ad.templateUrl);
       // const html = await res.text();
@@ -89,7 +104,6 @@ async function start() {
 
       veryCoolMap.setCenter(ad.location);
       veryCoolMarker.setPosition(ad.location);
-
       document.getElementById("text").innerText = ad.texts;
       document.getElementById("experions").innerText =
         "Experiencse: " + ad.experiense;

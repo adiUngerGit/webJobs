@@ -2,7 +2,7 @@ body {
     background-image:  url("/client/back.png");
 
 }
-#all{
+#all,#facebookLogin{
     font-family: Arial, Helvetica, sans-serif;
     padding: 30px;
     margin: auto;
@@ -12,4 +12,9 @@ body {
     line-height: center;
     text-align: center;
 border-radius: 10px;
+}
+#facebookLogin{
+padding:10px;
+width: 50%;
+border: white
 }

@@ -1,6 +1,7 @@
 const express = require("express");
 const mongo = require("./init-mongo");
 const http = require("http");
+const { response } = require("express");
 const app = express();
 const server = http.createServer(app);
 const ObjectId = require("mongodb").ObjectId;
@@ -142,6 +143,23 @@ app.post("/getAdSerchJob", async (request, response) => {
     const mappedAds = ads.map(addTemplateUrl);
 
     response.send(mappedAds);
+  } catch (err) {
+    response.status(400).send({ error: err.message });
+  }
+});
+
+app.post("/likeIt", async (request, response) => {
+  try {
+    await mongo
+      .db("web-ads")
+      .collection("users")
+      .updateOne(
+        {
+          name: request.name,
+        },
+        { $push: { like_job: request.id } }
+      );
+    response.send("ok");
   } catch (err) {
     response.status(400).send({ error: err.message });
   }

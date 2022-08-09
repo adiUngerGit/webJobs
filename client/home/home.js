@@ -1,6 +1,7 @@
 async function signUp() {
   const name = document.getElementById("nameUp").value;
   const password = document.getElementById("passwordUp").value;
+  const like_list = [];
   console.log(name, password);
   const res = await fetch("/insertUser", {
     method: "PATCH",
@@ -10,6 +11,7 @@ async function signUp() {
     body: JSON.stringify({
       name,
       password,
+      like_list,
     }),
   });
 
