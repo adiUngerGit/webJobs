@@ -25,6 +25,7 @@ header{
     text-align: center;
 border-radius: 10px;
 }
+
 /* .button {
     color: rgb(229, 165, 212);
     padding: 16px 32px;
@@ -36,3 +37,24 @@ border-radius: 10px;
     cursor: pointer;
     background-color: bisque;
   } */
+
+  #result,#divmap{
+      background-color: bisque;
+      font-family: Arial, Helvetica, sans-serif;
+      border: 3px solid rgba(0, 0, 0, 0,0);
+      background-color: rgba(186, 134, 199, 0.239);
+      padding: 10px;
+    line-height: center;
+    text-align: center;
+border-radius: 10px;
+  }
+  #map {
+    height: 200px;
+    width: 100%;
+    text-align: center;
+    line-height: center;
+    display:inline-bloc
+
+
+    /* margin: auto; */
+  }

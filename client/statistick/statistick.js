@@ -1,22 +1,25 @@
-f();
-// const data = [
-//   { name: "John", score: 80 },
-//   { name: "Simon", score: 76 },
-//   { name: "Samantha", score: 90 },
-//   { name: "Patrick", score: 82 },
-//   { name: "Mary", score: 90 },
-//   { name: "Christina", score: 75 },
-//   { name: "Michael", score: 86 },
-// ];
+// f();
+const data = [
+  { name: "John", score: 80 },
+  { name: "Simon", score: 76 },
+  { name: "Samantha", score: 90 },
+  { name: "Patrick", score: 82 },
+  { name: "Mary", score: 90 },
+  { name: "Christina", score: 75 },
+  { name: "Michael", score: 86 },
+];
 async function f() {
-  const res = await fetch("/apiscreen");
-  const ads = await res.json();
+  // const res = await fetch("/apiscreen");
+  // const ads = await res.json();
 
-  list = ads.map((x) => {
-    return { salary: x.salary };
-  });
-  start(list);
+  // list = ads.map((x) => {
+  //   return { salary: x.salary };
+  // });
+  start(data);
 }
+
+start(data);
+
 function start(data) {
   console.log(data);
   const width = 900;
@@ -38,20 +41,20 @@ function start(data) {
 
   const y = d3
     .scaleLinear()
-    .domain([0, 300])
+    .domain([0, 350])
     .range([height - margin.bottom, margin.top]);
 
   svg
     .append("g")
     .attr("fill", "royalblue")
     .selectAll("rect")
-    .data(data.sort((a, b) => d3.descending(a.salry, b.salry)))
+    .data(data.sort((a, b) => d3.descending(a.score, b.score)))
     .join("rect")
     .attr("x", (d, i) => x(i))
-    .attr("y", (d) => y(d.salry))
-    .attr("title", (d) => d.salry)
+    .attr("y", (d) => y(d.score))
+    .attr("title", (d) => d.score)
     .attr("class", "rect")
-    .attr("height", (d) => y(0) - y(d.salry))
+    .attr("height", (d) => y(0) - y(d.score))
     .attr("width", x.bandwidth());
 
   function yAxis(g) {

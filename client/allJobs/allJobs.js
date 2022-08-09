@@ -5,9 +5,7 @@ socket.on("ad-added", (ad) => {
   allAds.push(ad);
 });
 
-async function suprizeme() {
-  
-}
+async function suprizeme() {}
 async function getSerchAdJob() {
   document.getElementById("serchblock").style.visibility = "hidden";
 
@@ -62,6 +60,8 @@ async function getSerchAdCompany() {
 }
 
 async function getAllAd() {
+  document.getElementById("serchblock").style.visibility = "hidden";
+
   const res = await fetch("/apiscreen");
   const ads = await res.json();
 
@@ -79,18 +79,22 @@ async function start() {
   while (true) {
     for (let ad of allAds) {
       // if (1) {
-      const res = await fetch(ad.templateUrl);
-      const html = await res.text();
+      // const res = await fetch(ad.templateUrl);
+      // const html = await res.text();
 
-      document.getElementById("result").innerHTML = html;
+      // document.getElementById("result").innerHTML = html;
       document.getElementById("divmap").style = "display: block";
+      document.getElementById("result").style = "display: block";
+      document.getElementById("serch").style = " visibility: hidden";
+
       veryCoolMap.setCenter(ad.location);
       veryCoolMarker.setPosition(ad.location);
 
       document.getElementById("text").innerText = ad.texts;
-      document.getElementById("experions").innerText = ad.experiense;
-      document.getElementById("salary").innerText = ad.salary;
-      document.getElementById("company-name").innerText = "name:" + ad.name;
+      document.getElementById("experions").innerText =
+        "Experiencse: " + ad.experiense;
+      document.getElementById("salary").innerText = "Salary: " + ad.salary;
+      document.getElementById("company-name").innerText = "Name: " + ad.name;
       document.getElementById("employees").innerText =
         "The company have " + ad.employees + " employees";
       document.getElementById("years").innerText =

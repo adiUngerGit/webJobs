@@ -1,13 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <style>
-    #map {
-      height: 200px;
-      width: 40%;
-      /* margin: auto; */
-      border: 3px solid green;
-      padding: 10px;
-    }
+  
   </style>
   <link rel="stylesheet" href="./alljob.css" />
 
@@ -32,13 +26,33 @@
   </head>
   <body>
 
-    <div>
-      <div id="result"></div>
+    <div id="result" style="visibility:hidden" >
+        <div id="divText">
+          <h4 id="info">Information about the job:</h4>
+          <p id="text"></p>
+        </div>
+        <div id="divSalary">
+          <!-- <p id="sal">salary fer hour:</p> -->
+          <p id="salary"></p>
+        </div>
+        <div id="divEexperions">
+          <!-- <p id="exp">The experiense you need for this job</p> -->
+          <p id="experions"></p>
+        </div>
+        <div>
+          <h4>Information about the company:</h4>
+          <p id="company-name"></p>
+          <p id="employees"></p>
+          <p id="years"></p>
+        </div>
+      
       <div id="divmap" style="display: none"><div id="map"></div>
+      </div>
       </div>
 
 
-    <div id="serchblock" style="visibility: visible">
+<div id="serchAll" >
+    <div id="serchblock" >
       <header>
 
         <button id="supriseme" onclick="supriseme()">Suprise me</button>
@@ -88,6 +102,6 @@
     </br>
 
     </div>
-
+ </div>  
   </body>
 </html>

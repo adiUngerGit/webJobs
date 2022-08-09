@@ -20,16 +20,19 @@ async function add_ads() {
   document.getElementById("text").value = "";
   var locationName = document.getElementById("location").value;
   document.getElementById("location").value = "";
-  const salary = document.getElementById("salary").value;
+  let salary = document.getElementById("salary").value;
+  salary = parseInt(salary);
   document.getElementById("salary").value = "";
-  const employees = document.getElementById("employees").value;
+  let employees = document.getElementById("employees").value;
+  employees = parseInt(employees);
   document.getElementById("employees").value = "";
-  const years = document.getElementById("years").value;
+  let years = document.getElementById("years").value;
+  years = parseInt(years);
   document.getElementById("years").value = "";
   const experiense = document.getElementById("experiense").value;
   document.getElementById("experiense").value = "";
-  const video = document.getElementById("Video").value;
-  document.getElementById("Video").value = "";
+  // const video = document.getElementById("Video").value;
+  // document.getElementById("Video").value = "";
 
   const latlng = await geocode(locationName);
   console.log(latlng);
@@ -49,7 +52,7 @@ async function add_ads() {
       locationName,
       employees,
       years,
-      video,
+      // video,
     }),
   };
 
@@ -65,10 +68,14 @@ async function updateAdd() {
   const locationName = document.getElementById("locationEdit").value;
   const templateName = document.getElementById("templateEdit").value;
   const name = document.getElementById("edit").value;
-  const salary = parseInt(document.getElementById("salaryEdit").value);
+  let salary = parseInt(document.getElementById("salaryEdit").value);
+  salary = parseInt(salary);
   const experiense = document.getElementById("experienseEdit").value;
-  const employees = document.getElementById("employeesEdit").value;
-  const years = document.getElementById("yearsEdit").value;
+  let employees = document.getElementById("employeesEdit").value;
+  employees = parseInt(employees);
+
+  let years = document.getElementById("yearsEdit").value;
+  years = parseInt(years);
 
   const location =
     adBeingUpdated.locationName === locationName

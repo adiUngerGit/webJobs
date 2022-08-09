@@ -133,9 +133,8 @@ app.post("/getAdSerchJob", async (request, response) => {
       .db("web-ads")
       .collection("ads")
       .find({
-        // salary: { $gt: sal },
+        salary: { $gt: sal },
         experiense: request.body.experiense,
-
         locationName: { $regex: new RegExp(request.body.locationName, "i") },
       })
       .toArray();
@@ -150,15 +149,15 @@ app.post("/getAdSerchJob", async (request, response) => {
 
 app.post("/getAdSerchCompany", async (request, response) => {
   try {
-    const sal = parseInt(request.body.salary);
+    console.log(request);
     console.log(request.body.salary);
     const ads = await mongo
       .db("web-ads")
       .collection("ads")
       .find({
-        name: request.body.name,
-        employees: request.body.employees,
-        years: request.body.years,
+        name: { $regex: new RegExp(request.body.name, "i") },
+        employees: { $gte: parseInt(request.body.employees) },
+        years: { $gte: parseInt(request.body.years) },
       })
       .toArray();
 
@@ -214,5 +213,5 @@ app.get("/adds_name", async function (request, response) {
 
 mongo.connect((err) => {
   if (err) throw err;
-  server.listen(9001);
+  server.listen(8080);
 });
