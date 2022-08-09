@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <style>
+    #map {
+      height: 200px;
+      width: 40%;
+      /* margin: auto; */
+      border: 3px solid green;
+      padding: 10px;
+    }
+  </style>
+  <link rel="stylesheet" href="./alljob.css" />
+
+  <head>
+    <script
+      defer
+      src="https://cdn.socket.io/4.5.0/socket.io.min.js"
+      integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k"
+      crossorigin="anonymous"
+    ></script>
+    <script defer type="text/javascript" src="jquery.js"></script>
+    <script
+      defer
+      src="https://polyfill.io/v3/polyfill.min.js?features=default"
+    ></script>
+    <script defer src="initMap.js"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkidOHDUiNEDVET4YBNFOZW6jVPpOqLN0&callback=initMap&v=weekly"
+      defer
+    ></script>
+    <script defer src="allJobs.js"></script>
+  </head>
+  <body>
+
+    <div>
+      <div id="result"></div>
+      <div id="divmap" style="display: none"><div id="map"></div>
+      </div>
+
+
+    <div id="serchblock" style="visibility: visible">
+      <header>
+
+        <button id="supriseme" onclick="supriseme()">Suprise me</button>
+        <button id="alljob" onclick="getAllAd()">Get all jobs</button>
+      </header>
+    </br>
+      <section>
+        <h4>About the job</h4>
+        <div id="serch">
+       <div>   <label for="experienseEdit"> Choose the experions:</label>
+
+          <select name="experienseEdit" id="experienseEdit">
+            <option value="student">student</option>
+            <option value="jonior">jonior</option>
+            <option value="senior">senior</option>
+          </select>
+        </div>
+          <div><label
+            >Salary fer hour, more than: <input type="text" id="salarySerch"
+          /></label>
+        </div>
+          <label>Location: <input type="text" id="locationSerch" /></label>
+        </br>
+
+       <button onclick="getSerchAdJob()">serch</button>
+        </div>
+      </section>
+    </br>
+
+      <section id="">
+        <h4>About the company</h4>
+
+        <label
+          >The name of ths company: <input type="text" id="nameSerch"
+        /></label>
+      </br>
+        <label
+          >Employees, more than: <input type="text" id="employeesSerch"
+        /></label>
+      </br>
+
+        <label>Years, more than: <input type="text" id="yearsSerch" /></label>
+      </br>
+
+        <button onclick="getSerchAdCompany()">serch</button>
+      </section>
+    </br>
+
+    </div>
+
+  </body>
+</html>

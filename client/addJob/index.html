@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./addJob.css" />
+
+  </head>
+  <body>
+    <section id="addblock" style="display: block">
+      <div id="toconnect">
+        <h4>Information about the company:</h4>
+        <label> Name: <input type="text" id="name" /> </label>
+      </br>
+
+        <label>How many employees: <input type="text" id="employees" /></label>
+      </br>
+        <label
+          >How many years the company is: <input type="text" id="years"
+        /></label>
+      </div>
+      <h4 style="font-weight: bold">Inforamation about the job</h4>
+      <label
+        >Text: 
+    </br>
+        <textarea id="text" rows="4" cols="50"> </textarea>
+      </label>
+      <div>
+        <label>Location: <input type="text" id="location" /></label>
+      </div>
+      <label for="experiense"> Choose the experions you need:</label>
+      <select name="experiense" id="experiense">
+        <option value="student">student</option>
+        <option value="jonior">jonior</option>
+        <option value="senior">senior</option>
+      </select>
+
+      <div>
+        <label>Salary fer hour: <input type="text" id="salary" /></label>
+      </div>
+
+      <label for="template"> Choose a Template:</label>
+      <select name="template" id="template">
+        <option value="templateA">TemplateA</option>
+        <option value="templateB">TemplateB</option>
+        <option value="templateC">TemplateC</option>
+      </select>
+      <br />
+
+      <button onclick="add_ads()">Add job</button>
+
+
+    </section>
+    <br />
+    <section id="deleteblock" style="display: block">
+      <h4 style="font-weight: bold">Delete adds</h4>
+      <label for="template"> Choose a whith add you whant to delete:</label>
+      <select id="delete"></select>
+      <button onclick="delete_item()">Delete job</button>
+    </section>
+
+  </br>
+
+    <section id="hederEdit" style=" visibility: visible;
+    ">
+      <h4 style="font-weight: bold">Edit adds</h4>
+      <label for="template"> Choose a whith add you whant to edit:</label>
+      <select id="edit"></select>
+      <button onclick="edit_item()">Edit job</button>
+    </section>
+
+    <section id="editBlock" style="display: none">
+
+
+      <div id="toconnect">
+        <h4>Information about the company:</h4>
+        <label
+        >name: <input type="text" id="nameEdit"
+      /></label>
+      </br>
+        <label
+          >How many employees: <input type="text" id="employeesEdit"
+        /></label>
+      </br>
+
+        <label
+          >How many years the company is: <input type="text" id="yearsEdit"
+        /></label>
+      </br>
+      <h4 style="font-weight: bold">Inforamation about the job</h4>
+
+      </div>
+      <label
+        >Text: <br />
+        <textarea id="textEdit" rows="4" cols="50"> </textarea>
+      </label>
+
+      <div>
+        <label>location: <input type="text" id="locationEdit" /></label>
+      </div>
+
+      <br />
+      <br />
+
+
+      <label for="experienseEdit"> Choose the experions you need:</label>
+      <select name="experiensEdit" id="experienseEdit">
+        <option value="student">student</option>
+        <option value="jonior">jonior</option>
+        <option value="senior">senior</option>
+      </select>
+
+      <div>
+        <label>Salary fer hour: <input type="text" id="salaryEdit" /></label>
+      </div>
+
+      <label for="templateEdit"> Choose a Template:</label>
+      <select id="templateEdit">
+        <option value="templateA">TemplateA</option>
+        <option value="templateB">TemplateB</option>
+        <option value="templateC">TemplateC</option>
+      </select>
+      <br /><br />
+      
+      <button onclick="updateAdd()">Update job</button>
+
+      <br /><br />
+ 
+    </section>
+
+    <script defer src="addJob.js" defer></script>
+  </body>
+</html>
