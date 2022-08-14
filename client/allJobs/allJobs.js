@@ -1,5 +1,5 @@
 const socket = io();
-let id_for_currut_ad = 0;
+let current_location = "";
 socket.on("ad-added", (ad) => {
   console.log("ad added!", ad);
   allAds.push(ad);
@@ -11,15 +11,35 @@ async function like_it() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      id: id_for_currut_ad,
+      location: current_location,
       name: localStorage.getItem("name"),
     }),
   };
 
   const res = await fetch("/likeIt", options);
-  console.log(id_for_currut_ad);
+  console.log(current_location);
 }
-async function suprizeme() {}
+
+async function supriseme() {
+  document.getElementById("serchblock").style.visibility = "hidden";
+
+  var options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name: localStorage.getItem("name"),
+    }),
+  };
+
+  const res = await fetch("/suprise", options);
+  const ads = await res.json();
+  console.log(ads);
+
+  allAds = ads;
+  start();
+}
 async function getSerchAdJob() {
   document.getElementById("serchblock").style.visibility = "hidden";
 
@@ -92,7 +112,7 @@ async function start() {
   }
   while (true) {
     for (let ad of allAds) {
-      id_for_currut_ad = ad._id;
+      current_location = ad.locationName;
       // if (1) {
       // const res = await fetch(ad.templateUrl);
       // const html = await res.text();

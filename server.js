@@ -126,6 +126,27 @@ app.post("/getAdSuprise", async (request, response) => {
   }
 });
 
+function whoShowsUpTheMost(strings) {
+  strings = strings.map((str) => str.toLowerCase());
+  const counts = {};
+  for (const str of strings) {
+    if (str in counts) {
+      counts[str]++;
+    } else {
+      counts[str] = 1;
+    }
+  }
+  let result;
+  let max = -Infinity;
+  for (const [word, count] of Object.entries(counts)) {
+    if (count > max) {
+      max = count;
+      result = word;
+    }
+  }
+  return result;
+}
+
 app.post("/getAdSerchJob", async (request, response) => {
   try {
     const sal = parseInt(request.body.salary);
@@ -149,17 +170,39 @@ app.post("/getAdSerchJob", async (request, response) => {
 });
 
 app.post("/likeIt", async (request, response) => {
+  const { name, location } = request.body;
   try {
     await mongo
       .db("web-ads")
       .collection("users")
       .updateOne(
         {
-          name: request.name,
+          name: name,
         },
-        { $push: { like_job: request.id } }
+        { $push: { like_list: location } }
       );
     response.send("ok");
+  } catch (err) {
+    response.status(400).send({ error: err.message });
+  }
+});
+
+app.post("/suprise", async (request, response) => {
+  const { name } = request.body;
+  try {
+    const user = await mongo
+      .db("web-ads")
+      .collection("users")
+      .findOne({ name: name });
+    const most_like_location = whoShowsUpTheMost(user.like_list);
+    console.log(most_like_location);
+    const like_jobs = await mongo
+      .db("web-ads")
+      .collection("ads")
+      .find({ locationName: { $regex: new RegExp(most_like_location, "i") } })
+      .toArray();
+    console.log(like_jobs);
+    response.send(like_jobs);
   } catch (err) {
     response.status(400).send({ error: err.message });
   }
