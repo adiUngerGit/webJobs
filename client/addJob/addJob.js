@@ -14,8 +14,6 @@ async function geocode(locationName) {
 async function add_ads() {
   var name = document.getElementById("name").value;
   document.getElementById("name").value = "";
-  var templateName = document.getElementById("template").value;
-  document.getElementById("template").value = "";
   var texts = document.getElementById("text").value;
   document.getElementById("text").value = "";
   var locationName = document.getElementById("location").value;
@@ -31,6 +29,8 @@ async function add_ads() {
   document.getElementById("years").value = "";
   const experiense = document.getElementById("experiense").value;
   document.getElementById("experiense").value = "";
+  const type = document.getElementById("typeJ").value;
+  document.getElementById("typeJ").value = "";
   // const video = document.getElementById("Video").value;
   // document.getElementById("Video").value = "";
 
@@ -44,7 +44,6 @@ async function add_ads() {
     },
     body: JSON.stringify({
       name,
-      templateName,
       texts: texts,
       experiense,
       salary,
@@ -52,6 +51,7 @@ async function add_ads() {
       locationName,
       employees,
       years,
+      type,
       // video,
     }),
   };
@@ -66,7 +66,6 @@ async function add_ads() {
 async function updateAdd() {
   const texts = document.getElementById("textEdit").value;
   const locationName = document.getElementById("locationEdit").value;
-  const templateName = document.getElementById("templateEdit").value;
   const name = document.getElementById("edit").value;
   let salary = parseInt(document.getElementById("salaryEdit").value);
   salary = parseInt(salary);
@@ -77,6 +76,8 @@ async function updateAdd() {
   let years = document.getElementById("yearsEdit").value;
   years = parseInt(years);
 
+  const type = document.getElementById("typeEdit").value;
+  document.getElementById("typeEdit").value = "";
   const location =
     adBeingUpdated.locationName === locationName
       ? adBeingUpdated.location
@@ -89,7 +90,6 @@ async function updateAdd() {
     },
     body: JSON.stringify({
       name,
-      templateName,
       texts,
       salary,
       experiense,
@@ -97,6 +97,7 @@ async function updateAdd() {
       locationName,
       employees,
       years,
+      type,
       _id: adBeingUpdated._id,
     }),
   });
@@ -126,12 +127,12 @@ async function edit_item() {
 
   document.getElementById("textEdit").value = ad.texts;
   document.getElementById("locationEdit").value = ad.locationName;
-  document.getElementById("templateEdit").value = ad.templateName;
   document.getElementById("salaryEdit").value = ad.salary;
   document.getElementById("experienseEdit").value = ad.experiense;
   document.getElementById("employeesEdit").value = ad.employees;
   document.getElementById("yearsEdit").value = ad.years;
   document.getElementById("nameEdit").value = ad.name;
+  document.getElementById("typeEdit").value = ad.type;
 
   adBeingUpdated = ad;
 }

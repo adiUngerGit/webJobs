@@ -17,10 +17,10 @@
         <label>How many employees: <input type="text" id="employees" /></label>
       </br>
         <label
-          >How many years the company is: <input type="text" id="years"
+          >How many years the company exsisted: <input type="text" id="years"
         /></label>
       </div>
-      <h4 style="font-weight: bold">Inforamation about the job</h4>
+      <h4 style="font-weight: bold">Inforamation about the job: </h4>
       <label
         >Text: 
     </br>
@@ -37,14 +37,23 @@
       </select>
 
       <div>
-        <label>Salary fer hour: <input type="text" id="salary" /></label>
+        <label>Salary per hour: <input type="text" id="salary" /></label>
       </div>
+      <label for="typeJ"> Choose type for ths job:</label>
+      <select name="typeJ" id="typeJ">
+        <option value="comuter-science">Computer science</option>
+        <option value="Teacher">Teacher</option>
+        <option value="Doctor">Doctor</option>
+        <option value="Driver">Driver</option>
+        <option value="Journlist">Journlist</option>
+        <option value="marketing">marketing</option>
+        <option value="Social-worker">Social-worker</option>
+        <option value="Engineer">Engineer</option>
 
-      <label for="template"> Choose a Template:</label>
-      <select name="template" id="template">
-        <option value="templateA">TemplateA</option>
-        <option value="templateB">TemplateB</option>
-        <option value="templateC">TemplateC</option>
+
+
+
+
       </select>
       <br />
 
@@ -54,8 +63,8 @@
     </section>
     <br />
     <section id="deleteblock" style="display: block">
-      <h4 style="font-weight: bold">Delete adds</h4>
-      <label for="template"> Choose a whith add you whant to delete:</label>
+      <h4 style="font-weight: bold">Delete job</h4>
+      <label for="template"> Choose the job you want to delete:</label>
       <select id="delete"></select>
       <button onclick="delete_item()">Delete job</button>
     </section>
@@ -65,7 +74,7 @@
     <section id="hederEdit" style=" visibility: visible;
     ">
       <h4 style="font-weight: bold">Edit adds</h4>
-      <label for="template"> Choose a whith add you whant to edit:</label>
+      <label for="template"> Choose the job you want to edit:</label>
       <select id="edit"></select>
       <button onclick="edit_item()">Edit job</button>
     </section>
@@ -85,7 +94,7 @@
       </br>
 
         <label
-          >How many years the company is: <input type="text" id="yearsEdit"
+          >How many years the company exsisted: <input type="text" id="yearsEdit"
         /></label>
       </br>
       <h4 style="font-weight: bold">Inforamation about the job</h4>
@@ -110,17 +119,25 @@
         <option value="jonior">jonior</option>
         <option value="senior">senior</option>
       </select>
+    </br>
+      <label for="typeEdit">  Choose type for ths job:</label>
+
+      <select name="typeEdit" id="typeEdit">
+        <option value="comuter-science">Computer-science</option>
+        <option value="Teacher">Teacher</option>
+        <option value="Doctor">Doctor</option>
+        <option value="Driver">Driver</option>
+        <option value="Journlist">Journlist</option>
+        <option value="marketing">marketing</option>
+        <option value="Social-worker">Social-worker</option>
+        <option value="Engineer">Engineer</option>
+      </select>
 
       <div>
-        <label>Salary fer hour: <input type="text" id="salaryEdit" /></label>
+        <label>Salary per hour:<input type="text" id="salaryEdit" /></label>
       </div>
 
-      <label for="templateEdit"> Choose a Template:</label>
-      <select id="templateEdit">
-        <option value="templateA">TemplateA</option>
-        <option value="templateB">TemplateB</option>
-        <option value="templateC">TemplateC</option>
-      </select>
+    
       <br /><br />
       
       <button onclick="updateAdd()">Update job</button>

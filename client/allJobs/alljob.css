@@ -1,3 +1,6 @@
+body {
+    background-color:antiquewhite;
+}
 section {
     font-family: Arial, Helvetica, sans-serif;
     margin: auto;
@@ -9,7 +12,7 @@ section {
 border-radius: 10px;
 
 }
-header{
+header,p{
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
   

@@ -148,6 +148,11 @@ function whoShowsUpTheMost(strings) {
 }
 
 app.post("/getAdSerchJob", async (request, response) => {
+  console.log("ferfsvrefvra");
+  console.log(
+    request.body.salary + "," + request.body.experiense,
+    "," + request.body.locationName
+  );
   try {
     const sal = parseInt(request.body.salary);
     console.log(request.body.salary);
@@ -187,6 +192,40 @@ app.post("/likeIt", async (request, response) => {
   }
 });
 
+app.post("/statistick", async (request, response) => {
+  try {
+    const res = await mongo
+      .db("web-ads")
+      .collection("ads")
+      .aggregate([
+        {
+          $group: { _id: "$" + request.body.find, count: { $sum: 1 } },
+        },
+      ])
+      .toArray();
+    response.send(res);
+  } catch (err) {
+    response.status(400).send({ error: err.message });
+  }
+});
+
+app.get("/ap", async (request, response) => {
+  try {
+    const res = await mongo
+      .db("web-ads")
+      .collection("ads")
+      .aggregate([
+        {
+          $group: { _id: "$type", count: { $sum: 1 } },
+        },
+      ])
+      .toArray();
+    response.send(res);
+  } catch (err) {
+    response.status(400).send({ error: err.message });
+  }
+});
+
 app.post("/suprise", async (request, response) => {
   const { name } = request.body;
   try {
@@ -211,7 +250,6 @@ app.post("/suprise", async (request, response) => {
 app.post("/getAdSerchCompany", async (request, response) => {
   try {
     console.log(request);
-    console.log(request.body.salary);
     const ads = await mongo
       .db("web-ads")
       .collection("ads")
@@ -255,22 +293,7 @@ app.get("/adds_name", async function (request, response) {
   }
 });
 
-// app.get("/add-beer", async (req, res) => {
-//   await mongo.db("web-ads").collection("beers").insertOne({
-//     name: req.query.name,
-//     date: Date.now(),
-//   });
-//   res.send("okay");
-// });
-
-// app.get("/get-beers", async (req, res) => {
-//   const results = await mongo
-//     .db("web-ads")
-//     .collection("beers")
-//     .find({})
-//     .toArray();
-//   res.send(results);
-// });
+app.post("/");
 
 mongo.connect((err) => {
   if (err) throw err;

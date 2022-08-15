@@ -1,24 +1,34 @@
 // f();
-const data = [
-  { name: "John", score: 80 },
-  { name: "Simon", score: 76 },
-  { name: "Samantha", score: 90 },
-  { name: "Patrick", score: 82 },
-  { name: "Mary", score: 90 },
-  { name: "Christina", score: 75 },
-  { name: "Michael", score: 86 },
-];
-async function f() {
-  // const res = await fetch("/apiscreen");
-  // const ads = await res.json();
+let data = [];
 
-  // list = ads.map((x) => {
-  //   return { salary: x.salary };
-  // });
+async function f(find) {
+  var options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      find,
+    }),
+  };
+
+  const res = await fetch("/statistick", options);
+  data = await res.json();
+  // data = ads;
+
   start(data);
 }
+// async function f() {
+//   // const res = await fetch("/apiscreen");
+//   // const ads = await res.json();
 
-start(data);
+//   // list = ads.map((x) => {
+//   //   return { salary: x.salary };
+//   // });
+//   start(data);
+// }
+
+// start(data);
 
 function start(data) {
   console.log(data);
@@ -41,20 +51,20 @@ function start(data) {
 
   const y = d3
     .scaleLinear()
-    .domain([0, 350])
+    .domain([0, 10])
     .range([height - margin.bottom, margin.top]);
 
   svg
     .append("g")
     .attr("fill", "royalblue")
     .selectAll("rect")
-    .data(data.sort((a, b) => d3.descending(a.score, b.score)))
+    .data(data.sort((a, b) => d3.descending(a.count, b.count)))
     .join("rect")
     .attr("x", (d, i) => x(i))
-    .attr("y", (d) => y(d.score))
-    .attr("title", (d) => d.score)
+    .attr("y", (d) => y(d.count))
+    .attr("title", (d) => d.count)
     .attr("class", "rect")
-    .attr("height", (d) => y(0) - y(d.score))
+    .attr("height", (d) => y(0) - y(d.count))
     .attr("width", x.bandwidth());
 
   function yAxis(g) {
@@ -65,7 +75,7 @@ function start(data) {
 
   function xAxis(g) {
     g.attr("transform", `translate(0,${height - margin.bottom})`)
-      .call(d3.axisBottom(x).tickFormat((i) => data[i].name))
+      .call(d3.axisBottom(x).tickFormat((i) => data[i]._id))
       .attr("font-size", "20px");
   }
 
@@ -73,3 +83,5 @@ function start(data) {
   svg.append("g").call(yAxis);
   svg.node();
 }
+f("locationName");
+f("experiense");
